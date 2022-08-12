@@ -1,7 +1,7 @@
 variable "signalfx_auth_token" {
   type = string
 
-  default = "Jvb6veDUfkx5udXnzLTNCQ"
+  default = "<USER_API_KEY>"
 }
 
 variable "signalfx_api_url" {
