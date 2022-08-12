@@ -19,8 +19,8 @@ class copytf:
 
     def SelectArg(self):
         print(
-            "Please select an option to copy: \n [1] Group\n [2] Dashboard\n [3] Detector\n [4] Data Link")
-        option = input("Enter option:")
+            "\nPlease select an option to copy: \n [1] Group\n [2] Dashboard\n [3] Detector\n [4] Data Link")
+        option = input("\nEnter option: ")
         self.switch(option)
 
     def switch(self, option):
@@ -80,8 +80,8 @@ class buildtf:
 
     def SelectMenu(self):
         print(
-            "Please select a menu option: \n [1] Build group and dashboard")
-        option = input("Enter option:")
+            "\nPlease select a menu option: \n [1] Build group and dashboard")
+        option = input("\nEnter option: ")
         self.switch(option)
 
     def switch(self, option):
@@ -196,8 +196,8 @@ class menus:
 
     def SelectMenu(self):
         print(
-            "Please select a menu option: \n [1] Build TF from template\n [2] Copy TF from ID")
-        option = input("Enter option:")
+            "\nPlease select a menu option: \n [1] Build TF from template\n [2] Copy TF from ID")
+        option = input("\nEnter option: ")
         self.switch(option)
 
     def switch(self, option):
