@@ -174,7 +174,25 @@ class buildtf:
 class menus:
 
     def __init__(self) -> None:
+        self.CheckSetup()
         self.SelectMenu()
+
+    def CheckSetup(self):
+        if setup.api_key == '<USER_API_KEY>':
+            print("[!] Missing API key, please perform the following:")
+            print(
+                "    1. Settings\n    2. Click name on top left\n    3. Show API Access Token\n    4. Copy the API key to configure")
+            api_key = input("\nEnter User API Key: ")
+            with open(f"setup.py", 'r') as setup_file:
+                data = setup_file.read()
+                data = data.replace("<USER_API_KEY>", f"{api_key}")
+
+            with open(f"setup.py", 'w') as setup_file:
+                setup_file.write(data)
+
+            print(
+                "[!] API key has been set, run main.py again \n[!] IF needed replace key in setup.py")
+            exit()
 
     def SelectMenu(self):
         print(
