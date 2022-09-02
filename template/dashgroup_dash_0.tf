@@ -1,14 +1,14 @@
-# signalfx_text_chart.test_dash_0_0:
-resource "signalfx_text_chart" "test_dash_0_0" {
+# signalfx_text_chart.dashgroup_dash_0_0:
+resource "signalfx_text_chart" "dashgroup_dash_0_0" {
   markdown = <<-EOF
         <table width="100%" height="50%" rules="none"><tr><td valign="middle" align="center" bgcolor="#4682B4">
-        <font size="5" color="white">Scripps Health <DASH_NAME> Servers</font>
+        <font size="5" color="white"><TEAM_NAME> Servers</font>
         </td></tr></table>
     EOF
   name     = " "
 }
-# signalfx_heatmap_chart.test_dash_0_1:
-resource "signalfx_heatmap_chart" "test_dash_0_1" {
+# signalfx_heatmap_chart.dashgroup_dash_0_1:
+resource "signalfx_heatmap_chart" "dashgroup_dash_0_1" {
   description      = "Heatmap showing CPU Utilization % for all servers divided by group"
   disable_sampling = true
   group_by = [
@@ -51,17 +51,17 @@ resource "signalfx_heatmap_chart" "test_dash_0_1" {
     lte   = 75
   }
 }
-# signalfx_event_feed_chart.test_dash_0_2:
-resource "signalfx_event_feed_chart" "test_dash_0_2" {
+# signalfx_event_feed_chart.dashgroup_dash_0_2:
+resource "signalfx_event_feed_chart" "dashgroup_dash_0_2" {
   name         = "Event Feed"
   program_text = <<-EOF
         B = data('SS').publish(label='B')
-        C = alerts(detector_name='Device Engineering').publish(label='C')
+        C = alerts(detector_name='<TEAM_NAME>').publish(label='C')
     EOF
   time_range   = 86400
 }
-# signalfx_single_value_chart.test_dash_0_3:
-resource "signalfx_single_value_chart" "test_dash_0_3" {
+# signalfx_single_value_chart.dashgroup_dash_0_3:
+resource "signalfx_single_value_chart" "dashgroup_dash_0_3" {
   color_by                = "Dimension"
   is_timestamp_hidden     = true
   max_precision           = 4
@@ -78,8 +78,8 @@ resource "signalfx_single_value_chart" "test_dash_0_3" {
     label        = "A"
   }
 }
-# signalfx_time_chart.test_dash_0_4:
-resource "signalfx_time_chart" "test_dash_0_4" {
+# signalfx_time_chart.dashgroup_dash_0_4:
+resource "signalfx_time_chart" "dashgroup_dash_0_4" {
   axes_include_zero  = false
   axes_precision     = 0
   color_by           = "Dimension"
@@ -106,8 +106,8 @@ resource "signalfx_time_chart" "test_dash_0_4" {
     label        = "A"
   }
 }
-# signalfx_list_chart.test_dash_0_5:
-resource "signalfx_list_chart" "test_dash_0_5" {
+# signalfx_list_chart.dashgroup_dash_0_5:
+resource "signalfx_list_chart" "dashgroup_dash_0_5" {
   color_by                = "Scale"
   disable_sampling        = false
   hide_missing_values     = true
@@ -159,8 +159,8 @@ resource "signalfx_list_chart" "test_dash_0_5" {
     value_unit   = "Byte"
   }
 }
-# signalfx_list_chart.test_dash_0_6:
-resource "signalfx_list_chart" "test_dash_0_6" {
+# signalfx_list_chart.dashgroup_dash_0_6:
+resource "signalfx_list_chart" "dashgroup_dash_0_6" {
   color_by                = "Scale"
   disable_sampling        = false
   hide_missing_values     = true
@@ -212,8 +212,8 @@ resource "signalfx_list_chart" "test_dash_0_6" {
     value_unit   = "Byte"
   }
 }
-# signalfx_list_chart.test_dash_0_7:
-resource "signalfx_list_chart" "test_dash_0_7" {
+# signalfx_list_chart.dashgroup_dash_0_7:
+resource "signalfx_list_chart" "dashgroup_dash_0_7" {
   color_by                = "Scale"
   disable_sampling        = false
   hide_missing_values     = true
@@ -289,8 +289,8 @@ resource "signalfx_list_chart" "test_dash_0_7" {
     label        = "A"
   }
 }
-# signalfx_list_chart.test_dash_0_8:
-resource "signalfx_list_chart" "test_dash_0_8" {
+# signalfx_list_chart.dashgroup_dash_0_8:
+resource "signalfx_list_chart" "dashgroup_dash_0_8" {
   color_by                = "Scale"
   disable_sampling        = false
   hide_missing_values     = true
@@ -298,7 +298,7 @@ resource "signalfx_list_chart" "test_dash_0_8" {
   max_precision           = 0
   name                    = "Top 10 Disks Free Space (GB)"
   program_text            = <<-EOF
-        A = data('system.filesystem.usage', filter=filter('state', 'free') and filter('device', 'C:')).bottom(count=10).publish(label='A', enable=False)
+        A = data('system.filesystem.usage', filter=filter('state', 'free') and filter('mountpoint', '*')).bottom(count=10).publish(label='A', enable=False)
         C = (A/1024/1024/1024).publish(label='C')
     EOF
   secondary_visualization = "Linear"
@@ -412,8 +412,8 @@ resource "signalfx_list_chart" "test_dash_0_8" {
     label        = "A"
   }
 }
-# signalfx_time_chart.test_dash_0_9:
-resource "signalfx_time_chart" "test_dash_0_9" {
+# signalfx_time_chart.dashgroup_dash_0_9:
+resource "signalfx_time_chart" "dashgroup_dash_0_9" {
   axes_include_zero         = false
   axes_precision            = 0
   color_by                  = "Dimension"
@@ -457,8 +457,8 @@ resource "signalfx_time_chart" "test_dash_0_9" {
     value_unit   = "Byte"
   }
 }
-# signalfx_time_chart.test_dash_0_10:
-resource "signalfx_time_chart" "test_dash_0_10" {
+# signalfx_time_chart.dashgroup_dash_0_10:
+resource "signalfx_time_chart" "dashgroup_dash_0_10" {
   axes_include_zero         = false
   axes_precision            = 0
   color_by                  = "Dimension"
@@ -502,8 +502,8 @@ resource "signalfx_time_chart" "test_dash_0_10" {
     value_unit   = "Byte"
   }
 }
-# signalfx_list_chart.test_dash_0_11:
-resource "signalfx_list_chart" "test_dash_0_11" {
+# signalfx_list_chart.dashgroup_dash_0_11:
+resource "signalfx_list_chart" "dashgroup_dash_0_11" {
   color_by                = "Metric"
   disable_sampling        = false
   hide_missing_values     = false
@@ -538,8 +538,8 @@ resource "signalfx_list_chart" "test_dash_0_11" {
     label        = "B"
   }
 }
-# signalfx_list_chart.test_dash_0_12:
-resource "signalfx_list_chart" "test_dash_0_12" {
+# signalfx_list_chart.dashgroup_dash_0_12:
+resource "signalfx_list_chart" "dashgroup_dash_0_12" {
   color_by                = "Dimension"
   disable_sampling        = false
   hide_missing_values     = true
@@ -583,99 +583,99 @@ resource "signalfx_list_chart" "test_dash_0_12" {
     label        = "B"
   }
 }
-# signalfx_dashboard.test_dash_0:
-resource "signalfx_dashboard" "test_dash_0" {
+# signalfx_dashboard.dashgroup_dash_0:
+resource "signalfx_dashboard" "dashgroup_dash_0" {
   charts_resolution = "default"
-  dashboard_group   = signalfx_dashboard_group.test.id
-  name              = "<DASH_NAME>"
-  time_range        = "-3d"
+  dashboard_group   = "${signalfx_dashboard_group.<TEAM_ID>_dashgroup.id}"
+  name              = "<TEAM_NAME> Servers"
+  time_range        = "-1d"
 
   chart {
-    chart_id = signalfx_single_value_chart.test_dash_0_3.id
+    chart_id = signalfx_single_value_chart.dashgroup_dash_0_3.id
     column   = 6
     height   = 1
     row      = 3
     width    = 3
   }
   chart {
-    chart_id = signalfx_list_chart.test_dash_0_12.id
+    chart_id = signalfx_list_chart.dashgroup_dash_0_12.id
     column   = 3
     height   = 1
     row      = 6
     width    = 3
   }
   chart {
-    chart_id = signalfx_time_chart.test_dash_0_10.id
+    chart_id = signalfx_time_chart.dashgroup_dash_0_10.id
     column   = 3
     height   = 1
     row      = 5
     width    = 3
   }
   chart {
-    chart_id = signalfx_list_chart.test_dash_0_7.id
+    chart_id = signalfx_list_chart.dashgroup_dash_0_7.id
     column   = 6
     height   = 3
     row      = 4
     width    = 3
   }
   chart {
-    chart_id = signalfx_time_chart.test_dash_0_4.id
+    chart_id = signalfx_time_chart.dashgroup_dash_0_4.id
     column   = 9
     height   = 1
     row      = 3
     width    = 3
   }
   chart {
-    chart_id = signalfx_list_chart.test_dash_0_5.id
+    chart_id = signalfx_list_chart.dashgroup_dash_0_5.id
     column   = 0
     height   = 1
     row      = 4
     width    = 3
   }
   chart {
-    chart_id = signalfx_event_feed_chart.test_dash_0_2.id
+    chart_id = signalfx_event_feed_chart.dashgroup_dash_0_2.id
     column   = 6
     height   = 2
     row      = 1
     width    = 6
   }
   chart {
-    chart_id = signalfx_list_chart.test_dash_0_11.id
+    chart_id = signalfx_list_chart.dashgroup_dash_0_11.id
     column   = 0
     height   = 1
     row      = 6
     width    = 3
   }
   chart {
-    chart_id = signalfx_list_chart.test_dash_0_6.id
+    chart_id = signalfx_list_chart.dashgroup_dash_0_6.id
     column   = 3
     height   = 1
     row      = 4
     width    = 3
   }
   chart {
-    chart_id = signalfx_heatmap_chart.test_dash_0_1.id
+    chart_id = signalfx_heatmap_chart.dashgroup_dash_0_1.id
     column   = 0
     height   = 3
     row      = 1
     width    = 6
   }
   chart {
-    chart_id = signalfx_time_chart.test_dash_0_9.id
+    chart_id = signalfx_time_chart.dashgroup_dash_0_9.id
     column   = 0
     height   = 1
     row      = 5
     width    = 3
   }
   chart {
-    chart_id = signalfx_list_chart.test_dash_0_8.id
+    chart_id = signalfx_list_chart.dashgroup_dash_0_8.id
     column   = 9
     height   = 3
     row      = 4
     width    = 3
   }
   chart {
-    chart_id = signalfx_text_chart.test_dash_0_0.id
+    chart_id = signalfx_text_chart.dashgroup_dash_0_0.id
     column   = 0
     height   = 1
     row      = 0
@@ -687,12 +687,12 @@ resource "signalfx_dashboard" "test_dash_0" {
     negated        = false
     property       = "description"
     values = [
-      "*<DASH_FILTER>*",
+      "*<TEAM_NAME>*",
     ]
   }
 
   permissions {
-    parent = signalfx_dashboard_group.test.id
+    parent = "${signalfx_dashboard_group.<TEAM_ID>_dashgroup.id}"
   }
 
   variable {

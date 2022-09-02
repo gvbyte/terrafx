@@ -1,3 +1,5 @@
+# Please configure these variables in setup.py
+
 variable "signalfx_auth_token" {
   type = string
 
@@ -7,20 +9,22 @@ variable "signalfx_auth_token" {
 variable "signalfx_api_url" {
   type = string
 
-  default = "https://api.us1.signalfx.com"
+  default = "<API_URL>"
 }
 
 variable "signalfx_custom_url" {
   type = string
 
-  default = "https://scripps.signalfx.com"
+  default = "<ORG_URL>"
 }
 
 # Please make sure team exists in Splunk 011y
-
-variable "teams" {
+variable "team" {
   type    = set(string)
-  default = ["Computing"]
+  default = ["<TEAM_NAME>"]
 }
 
-
+variable "members" {
+  type    = set(string)
+  default = ["<EMAIL>"]
+}

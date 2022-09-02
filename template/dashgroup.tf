@@ -1,30 +1,28 @@
-# signalfx_dashboard_group.test:
-resource "signalfx_dashboard_group" "test" {
-  name = "<DASH_GROUP_NAME>"
-  teams = [
-    "<DASH_TEAM>",
-  ]
+
+resource "signalfx_dashboard_group" "<TEAM_ID>_dashgroup" {
+  name  = "<TEAM_NAME>"
+  teams = ["${signalfx_team.<TEAM_ID>.id}"]
 
   permissions {
     actions = [
       "READ",
       "WRITE",
     ]
-    principal_id   = "FOJEY_7AwAE"
+    principal_id   = "<ADMIN_TEAM_0>"
     principal_type = "TEAM"
   }
   permissions {
     actions = [
       "READ",
     ]
-    principal_id   = "FOItL4QA4AA"
+    principal_id   = "<ADMIN_TEAM_1>"
     principal_type = "TEAM"
   }
   permissions {
     actions = [
       "READ",
     ]
-    principal_id   = "<DASH_TEAM>"
+    principal_id   = "${signalfx_team.<TEAM_ID>.id}"
     principal_type = "TEAM"
   }
 }
